@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import AddPlayerComponent = require("./add-player/add-player.component");
-
+import { Player as Player } from "./add-player/player";
 
 @Component({
   selector: 'app-root',
@@ -9,5 +8,5 @@ import AddPlayerComponent = require("./add-player/add-player.component");
 })
 export class AppComponent {
   title = 'app';
-  public players: AddPlayerComponent.Player[];
+  public players: Player[];
 }

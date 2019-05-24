@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
+import { PlayerService } from './services/player-service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { AddPlayerComponent } from './add-player/add-player.component';
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [],
+  providers: [PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
