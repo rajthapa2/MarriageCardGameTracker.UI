@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { PlayerService } from './services/player-service';
+import { GameService } from './services/game-service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { PlayerService } from './services/player-service';
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [PlayerService],
+  providers: [PlayerService, GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -27,12 +27,14 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\add-player\add-player.component.ts" />
     <None Remove="ClientApp\src\app\add-player\player.ts" />
+    <None Remove="ClientApp\src\app\services\game-service.ts" />
     <None Remove="ClientApp\src\app\services\player-service.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\add-player\add-player.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\add-player\player.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\game-service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\player-service.ts" />
   </ItemGroup>
 
