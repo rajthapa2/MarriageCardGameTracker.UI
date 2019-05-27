@@ -5,11 +5,12 @@ import { HttpClient } from '@angular/common/http';
 import { PlayerService } from "../services/player-service"
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Game as Game} from "../game/game";
 
 
 @Injectable()
 export class GameService {
-  gameId: Number;
+  game: Game;
   http: HttpClient;
   baseUrl: String;
   playerService: PlayerService;
@@ -29,21 +30,27 @@ export class GameService {
 
   createGame() {
     this.loadPlayers();
-    this.http.post(this.baseUrl + '/api/game', JSON.stringify(this.players), this.httpOptions)
-      .subscribe(response => {
-        console.log(response);
-        },
-        error=> {
-          console.log(error);
-        }
-      );
+//    this.http.post(this.baseUrl + '/api/game', JSON.stringify(this.players), this.httpOptions)
+//      .subscribe(response => {
+//          console.log(response);
+//        },
+//        error => {
+//          console.log(error);
+//        }
+//    );
+
+    this.http.post<Game>(this.baseUrl + '/api/game', JSON.stringify(this.players), this.httpOptions).subscribe(
+      result => {
+        this.game = result;
+        this.router.navigate(['/game/', this.game.id]);
+      },
+      error => console.error(error));
   }
 
-    constructor(http: HttpClient, @Inject('APP_BASE_URL') baseUrl: string, playerService: PlayerService, router: Router) {
+  constructor(http: HttpClient, @Inject('APP_BASE_URL') baseUrl: string, playerService: PlayerService, router: Router) {
       this.http = http;
       this.baseUrl = baseUrl;
       this.playerService = playerService;
       this.router = router;
     }
-
 }

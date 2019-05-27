@@ -27,6 +27,8 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\add-player\add-player.component.ts" />
     <None Remove="ClientApp\src\app\add-player\player.ts" />
+    <None Remove="ClientApp\src\app\game\game.component.ts" />
+    <None Remove="ClientApp\src\app\game\game.ts" />
     <None Remove="ClientApp\src\app\services\game-service.ts" />
     <None Remove="ClientApp\src\app\services\player-service.ts" />
   </ItemGroup>
@@ -34,8 +36,19 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\add-player\add-player.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\add-player\player.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\game\game.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\game\game.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\game-service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\player-service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ClientApp\src\app\game\game.component.js">
+      <DependentUpon>game.component.ts</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\game\game.component.js.map">
+      <DependentUpon>game.component.js</DependentUpon>
+    </None>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

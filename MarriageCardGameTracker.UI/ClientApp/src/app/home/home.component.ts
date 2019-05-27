@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Player as Player } from "../add-player/player";
 import {PlayerService} from "../services/player-service"
 import { GameService } from "../services/game-service"
 
