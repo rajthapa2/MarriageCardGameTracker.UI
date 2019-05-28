@@ -13,7 +13,7 @@ export class AddPlayerComponent {
   playerService: PlayerService;
 
   constructor(playerService: PlayerService) {
-    this.playerService = playerService
+    this.playerService = playerService;
     this.players = playerService.getPlayers();
   }
 

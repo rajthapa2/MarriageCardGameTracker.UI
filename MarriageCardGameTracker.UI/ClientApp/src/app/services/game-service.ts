@@ -24,21 +24,11 @@ export class GameService {
  private httpOptions = {
     headers: new HttpHeaders({
       'content-Type': 'application/json'
-   }),
-    withCredentials: false
+   })
   };
 
   createGame() {
     this.loadPlayers();
-//    this.http.post(this.baseUrl + '/api/game', JSON.stringify(this.players), this.httpOptions)
-//      .subscribe(response => {
-//          console.log(response);
-//        },
-//        error => {
-//          console.log(error);
-//        }
-//    );
-
     this.http.post<Game>(this.baseUrl + '/api/game', JSON.stringify(this.players), this.httpOptions).subscribe(
       result => {
         this.game = result;
