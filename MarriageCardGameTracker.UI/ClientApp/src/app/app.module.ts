@@ -32,7 +32,7 @@ import { GameService } from './services/game-service';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'game/:id', component: GameComponent },
+      { path: 'game/:id', component: GameComponent }
     ])
   ],
   providers: [PlayerService, GameService],

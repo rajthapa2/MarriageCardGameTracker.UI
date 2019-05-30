@@ -4,7 +4,7 @@ import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PlayerService } from "../services/player-service"
 import { HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Game as Game} from "../game/game";
 
 
@@ -16,6 +16,7 @@ export class GameService {
   playerService: PlayerService;
   players: Player[];
   router: Router;
+  route: ActivatedRoute;
 
   loadPlayers() {
     this.players = this.playerService.players;
@@ -38,9 +39,18 @@ export class GameService {
   }
 
   constructor(http: HttpClient, @Inject('APP_BASE_URL') baseUrl: string, playerService: PlayerService, router: Router) {
-      this.http = http;
-      this.baseUrl = baseUrl;
-      this.playerService = playerService;
-      this.router = router;
-    }
+    this.http = http;
+    this.baseUrl = baseUrl;
+    this.playerService = playerService;
+    this.router = router;
+  }
+
+  loadGame() {
+    this.http.get<Game>(this.baseUrl + '/api/game/' + this.game.id).subscribe(
+      result => {
+        this.game = result;
+        console.log(result);
+      },
+      error => console.error(error));
+  }
 }

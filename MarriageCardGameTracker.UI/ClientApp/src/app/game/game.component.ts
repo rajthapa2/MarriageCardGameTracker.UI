@@ -13,24 +13,16 @@ export class GameComponent {
   gameService: GameService;
   baseUrl: string;
   
-//  private httpOptions = {
-//    headers: new HttpHeaders({
-//      'content-Type': 'application/json'
-//    })
-//  };
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'content-Type': 'application/json'
+    })
+  };
 
-//  constructor(httpClient: HttpClient, @Inject('APP_BASE_URL') baseUrl: string, gameService: GameService) {
-//    this.http = httpClient;
-//    this.gameService = gameService;
-//    this.baseUrl = baseUrl;
-//
-//
-//    this.http.get<GameViewModel>(this.baseUrl + '/api/game/').subscribe(
-//      result => {
-//      },
-//      error => console.error(error));
-//
-//
-//  }
+  constructor(gameService: GameService) {
+    this.gameService = gameService;
+
+    this.gameService.loadGame();
+  }
   
 }
