@@ -1,6 +1,43 @@
 <div>
   <div>
-    <h6>Previous Rounds</h6>
+    <!-- <p>Players: </p> -->
+    <!-- <ul> -->
+    <!--   <li>Round</li> -->
+    <!--   <li *ngFor="let player of game.players">{{ player.name }}</li> -->
+    <!-- </ul> -->
   </div>
-  <h5>Current Round</h5>
+  <div *ngIf="game.roundsResults.length > 0">
+    <h6>Previous Rounds</h6>
+    <div>
+      <ul class = "ul-clear">
+        <li class="li-clear">Round</li>
+        <li *ngFor="let player of game.players" class="li-clear">{{ player.name }}</li>
+        <li class="li-clear">TotalMaal</li>
+      </ul>
+      <ul *ngFor="let round of game.roundsResults">
+        <li>{{round.roundId}}</li>
+        <ul *ngFor ="let calc of round.result">
+          <li>{{calc.calculatedValue}}</li>
+        </ul>
+        <!-- <li>{{round.totalMaal}}</li> -->
+      </ul>
+    </div>
+  </div>
+  <div>
+    <h5>Current Round</h5>
+    <table>
+      <tr>
+        <td>Player</td>
+        <td>MaalSeen</td>
+        <td>GameWon</td>
+        <td>Maal</td>
+      </tr>
+      <tr *ngFor="let roundPlayer of currentRound.playersMaal">
+      <td>{{roundPlayer.name}}</td>
+      <td><input type="checkbox" [(ngModel)]="roundPlayer.maalSeen"  name="maalSeen"/></td>
+      <td><input type="checkbox" [(ngModel)]="roundPlayer.gameWon" name="gameWon"/></td>
+      <td><input type="number" [(ngModel)]="roundPlayer.totalMaal" name="totalMaal"/></td>
+    </table>
+    <input type="button" name="Calculate"  (click)="calculateMaal()" value="calculate"/>
+  </div>
 </div>

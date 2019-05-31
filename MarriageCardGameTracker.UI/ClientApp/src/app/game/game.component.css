@@ -1,0 +1,17 @@
+ul {
+  list-style-type: none;
+}
+
+td {
+  padding: 10px;
+}
+
+li-clear {
+  display: inline;
+  padding: 20px;
+
+}
+
+ul-clear {
+  overflow: hidden;
+}

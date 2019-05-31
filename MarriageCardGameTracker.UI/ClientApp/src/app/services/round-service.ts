@@ -6,20 +6,19 @@ import { PlayerService } from "../services/player-service"
 import { HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Game as Game } from "../game/game";
+import { RoundRequest } from '../round/round-request';
+import { RoundResponse } from '../round/round-response';
 
 
 @Injectable()
-export class GameService {
-  game: Game;
+export class RoundService {
+  roundResult: RoundResponse;
   http: HttpClient;
   baseUrl: String;
   playerService: PlayerService;
   players: Player[];
   router: Router;
 
-  loadPlayers() {
-    this.players = this.playerService.players;
-  }
 
  private httpOptions = {
     headers: new HttpHeaders({
@@ -27,15 +26,7 @@ export class GameService {
    })
   };
 
-  createGame() {
-    this.loadPlayers();
-    this.http.post<Game>(this.baseUrl + '/api/game', JSON.stringify(this.players), this.httpOptions).subscribe(
-      result => {
-        this.game = result;
-        this.router.navigate(['/game/', this.game.id ]);
-      },
-      error => console.error(error));
-  }
+
 
   constructor(http: HttpClient, @Inject('APP_BASE_URL') baseUrl: string, playerService: PlayerService, router: Router) {
     this.http = http;
@@ -44,13 +35,15 @@ export class GameService {
     this.router = router;
   }
 
-  public loadGame(gameId: string) {
+  public calculate(gameId: string, roundRequest: RoundRequest) {
 
+
+    // api/{GameId}/rounds
     return new Promise(resolve => {
-      this.http.get<Game>(this.baseUrl + '/api/game/' + gameId)
+      this.http.post<RoundResponse>(this.baseUrl + '/api/' + gameId + '/rounds', JSON.stringify(roundRequest), this.httpOptions)
         .subscribe(
           result => {
-            this.game = result;
+            this.roundResult = result; 
             console.log(result);
             resolve(result);
           },

@@ -29,8 +29,12 @@
     <None Remove="ClientApp\src\app\add-player\player.ts" />
     <None Remove="ClientApp\src\app\game\game.component.ts" />
     <None Remove="ClientApp\src\app\game\game.ts" />
+    <None Remove="ClientApp\src\app\round\round-player.ts" />
+    <None Remove="ClientApp\src\app\round\round-request.ts" />
+    <None Remove="ClientApp\src\app\round\round-response.ts" />
     <None Remove="ClientApp\src\app\services\game-service.ts" />
     <None Remove="ClientApp\src\app\services\player-service.ts" />
+    <None Remove="ClientApp\src\app\services\round-service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +42,10 @@
     <TypeScriptCompile Include="ClientApp\src\app\add-player\player.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\game\game.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\game\game.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\round\round-player.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\round\round-response.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\round\round-request.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\round-service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\game-service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\player-service.ts" />
   </ItemGroup>

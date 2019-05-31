@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { GameComponent } from './game/game.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { PlayerService } from './services/player-service';
+import { RoundService } from './services/round-service';
 import { GameService } from './services/game-service';
 
 @NgModule({
@@ -35,7 +36,7 @@ import { GameService } from './services/game-service';
       { path: 'game/:id', component: GameComponent }
     ])
   ],
-  providers: [PlayerService, GameService],
+  providers: [PlayerService, GameService, RoundService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
