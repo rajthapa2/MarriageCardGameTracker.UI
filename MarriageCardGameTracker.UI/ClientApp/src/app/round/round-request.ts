@@ -1,5 +1,4 @@
-import Roundplayer = require("./round-player");
-import RoundPlayer = Roundplayer.RoundPlayer;
+import {RoundPlayer} from './round-player';
 
 export class RoundRequest {
   roundId: number;

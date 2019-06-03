@@ -6,12 +6,24 @@ td {
   padding: 10px;
 }
 
-li-clear {
+li {
   display: inline;
   padding: 20px;
-
+  width: 100%
 }
 
-ul-clear {
+ul{
+  display: inline-block;
+  vertical-align: initial;
   overflow: hidden;
 }
+.main-list {
+  width: 100%;
+  clear: both;
+}
+.players-list li:after:first-child{
+  padding-right: 40px;
+}
+/* .players-list li:first-child { */
+/*   padding-right: 10px; */
+/* } */

@@ -40,6 +40,7 @@ export class GameComponent {
       .then((game: Game) => {
         this.game = game;
         this.currentRound = this.makeRoundRequest();
+//        this.previousRounds = this.makePreviousRounds();
       });
   }
 
@@ -57,5 +58,13 @@ export class GameComponent {
     var id = this.route.snapshot.paramMap.get('id');
     this.roundService.calculate(id, this.currentRound);
   }
+
+  makePreviousRounds() {
+
+  }
+}
+
+export class PreviousRounds
+{
 
 }

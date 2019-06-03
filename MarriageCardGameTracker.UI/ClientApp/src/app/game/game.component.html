@@ -9,12 +9,14 @@
   <div *ngIf="game.roundsResults.length > 0">
     <h6>Previous Rounds</h6>
     <div>
-      <ul class = "ul-clear">
-        <li class="li-clear">Round</li>
-        <li *ngFor="let player of game.players" class="li-clear">{{ player.name }}</li>
-        <li class="li-clear">TotalMaal</li>
+      <ul class="players-list">
+        <li>Round</li>
+        <li *ngFor="let player of game.players">{{ player.name }}</li>
+        <!-- <li>TotalMaal</li> -->
       </ul>
-      <ul *ngFor="let round of game.roundsResults">
+    </div>
+    <div>
+      <ul class="main-list" *ngFor="let round of game.roundsResults">
         <li>{{round.roundId}}</li>
         <ul *ngFor ="let calc of round.result">
           <li>{{calc.calculatedValue}}</li>
