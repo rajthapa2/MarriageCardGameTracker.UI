@@ -24,19 +24,6 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="ClientApp\src\app\add-player\add-player.component.ts" />
-    <None Remove="ClientApp\src\app\add-player\player.ts" />
-    <None Remove="ClientApp\src\app\game\game.component.ts" />
-    <None Remove="ClientApp\src\app\game\game.ts" />
-    <None Remove="ClientApp\src\app\round\round-player.ts" />
-    <None Remove="ClientApp\src\app\round\round-request.ts" />
-    <None Remove="ClientApp\src\app\round\round-response.ts" />
-    <None Remove="ClientApp\src\app\services\game-service.ts" />
-    <None Remove="ClientApp\src\app\services\player-service.ts" />
-    <None Remove="ClientApp\src\app\services\round-service.ts" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <None Update="ClientApp\src\app\game\game.component.js">

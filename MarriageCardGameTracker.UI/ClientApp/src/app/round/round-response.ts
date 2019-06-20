@@ -3,10 +3,6 @@ export class RoundResponse {
   roundId: number;
   totalMaal: number;
   result : RoundResponsePlayer[];
-
-  constructor() {
-
-  }
 }
 
 

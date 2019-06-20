@@ -26,8 +26,6 @@ export class RoundService {
    })
   };
 
-
-
   constructor(http: HttpClient, @Inject('APP_BASE_URL') baseUrl: string, playerService: PlayerService, router: Router) {
     this.http = http;
     this.baseUrl = baseUrl;
@@ -36,18 +34,22 @@ export class RoundService {
   }
 
   public calculate(gameId: string, roundRequest: RoundRequest) {
-
-
     // api/{GameId}/rounds
-    return new Promise(resolve => {
-      this.http.post<RoundResponse>(this.baseUrl + '/api/' + gameId + '/rounds', JSON.stringify(roundRequest), this.httpOptions)
-        .subscribe(
-          result => {
-            this.roundResult = result; 
-            console.log(result);
-            resolve(result);
+    let promise = new Promise((resolve, reject) => {
+      let apiUrl = `${this.baseUrl}/api/${gameId}/rounds`;
+      this.http.post<RoundResponse>(apiUrl, JSON.stringify(roundRequest), this.httpOptions)
+        .toPromise()
+        .then(
+          res => { // success
+            console.log(res);
+            this.roundResult = res;
+            resolve(res);
           },
-          error => console.error(error));
+          msg => { // error
+            reject(msg);
+          }
+        );
     });
+    return promise;
   }
 }

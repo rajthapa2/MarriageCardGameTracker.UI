@@ -6,6 +6,7 @@ import { RoundService } from '../services/round-service';
 import { Injectable } from '@angular/core';
 import {Game} from './game'
 import { RoundRequest } from '../round/round-request';
+import { RoundResponse as RoundResult} from '../round/round-response';
 import { RoundPlayer } from '../round/round-player';
 
 
@@ -21,8 +22,8 @@ export class GameComponent {
   roundService: RoundService;
   baseUrl: string;
   game: Game;
-  currentRound : RoundRequest;
-  
+  currentRound: RoundRequest;
+  errorMessage: string;
   private httpOptions = {
     headers: new HttpHeaders({
       'content-Type': 'application/json'
@@ -34,37 +35,37 @@ export class GameComponent {
     this.gameService = gameService;
     this.roundService = roundService;
     this.currentRound = new RoundRequest;
+
     var id = this.route.snapshot.paramMap.get('id');
 
     this.gameService.loadGame(id)
       .then((game: Game) => {
         this.game = game;
-        this.currentRound = this.makeRoundRequest();
-//        this.previousRounds = this.makePreviousRounds();
+        this.makeRoundRequest();
       });
   }
 
   private makeRoundRequest() {
     let round = new RoundRequest();
+    round.roundId = this.game.roundsResults.length + 1;
     this.game.players.forEach(x => {
       let roundPlayer = new RoundPlayer();
       roundPlayer.name = x.name;
       round.playersMaal.push(roundPlayer);
     });
-    return round;
+    this.currentRound = round;
   };
 
   calculateMaal() {
-    var id = this.route.snapshot.paramMap.get('id');
-    this.roundService.calculate(id, this.currentRound);
+    const id = this.route.snapshot.paramMap.get('id');
+    this.roundService.calculate(id, this.currentRound)
+      .then((roundResult: RoundResult) => {
+          this.errorMessage = null;
+          this.game.roundsResults.push(roundResult);
+          this.makeRoundRequest();
+        },
+        (error) => {
+          this.errorMessage = error.error.errorMessage;
+        });
   }
-
-  makePreviousRounds() {
-
-  }
-}
-
-export class PreviousRounds
-{
-
 }
