@@ -35,7 +35,6 @@ export class GameComponent {
     this.gameService = gameService;
     this.roundService = roundService;
     this.currentRound = new RoundRequest;
-
     var id = this.route.snapshot.paramMap.get('id');
 
     this.gameService.loadGame(id)

@@ -1,19 +1,17 @@
 <div>
-  <div><p class="warning">{{errorMessage}}</p></div>
+  <p class="warning">{{errorMessage}}</p>
   <div *ngIf="game.roundsResults.length > 0">
     <h6>Previous Rounds</h6>
-    <div>
-      <table>
-        <tr>
-          <td>Round</td>
-          <td *ngFor="let player of game.players">{{ player.name }}</td>
-        </tr>
-        <tr *ngFor="let round of game.roundsResults">
-          <td>{{round.roundId}}</td>
-          <td *ngFor="let point of round.result">{{point.calculatedValue}}</td>
-        </tr>
-      </table>
-    </div>
+    <table>
+      <tr>
+        <td>Round</td>
+        <td *ngFor="let player of game.players">{{ player.name }}</td>
+      </tr>
+      <tr *ngFor="let round of game.roundsResults">
+        <td>{{round.roundId}}</td>
+        <td *ngFor="let point of round.result">{{point.calculatedValue}}</td>
+      </tr>
+    </table>
   </div>
   <div>
     <h5>Current Round</h5>
@@ -26,10 +24,10 @@
       </tr>
       <tr *ngFor="let roundPlayer of currentRound.playersMaal">
       <td>{{roundPlayer.name}}</td>
-      <td><input type="checkbox" [(ngModel)]="roundPlayer.maalSeen" name="maalSeen"/></td>
-      <td><input type="checkbox" [(ngModel)]="roundPlayer.gameWon" name="gameWon"/></td>
-      <td><input type="number" [(ngModel)]="roundPlayer.totalMaal" name="totalMaal"/></td>
+      <td><input type="checkbox" [(ngModel)]="roundPlayer.maalSeen" name="maalSeen" /></td>
+      <td><input type="checkbox" [(ngModel)]="roundPlayer.gameWon" name="gameWon" /></td>
+      <td><input type="number" [(ngModel)]="roundPlayer.totalMaal" name="totalMaal" /></td>
     </table>
-    <input type="button" name="Calculate" (click)="calculateMaal()" value="calculate"/>
+    <input type="button" name="Calculate" (click)="calculateMaal()" value="calculate" />
   </div>
 </div>
