@@ -2,20 +2,28 @@
   <p class="warning">{{errorMessage}}</p>
   <div *ngIf="game.roundsResults.length > 0">
     <h6>Previous Rounds</h6>
-    <table>
+    <table class="table-striped">
       <tr>
+        <!-- <td>&nbsp;</td> -->
         <td>Round</td>
         <td *ngFor="let player of game.players">{{ player.name }}</td>
       </tr>
       <tr *ngFor="let round of game.roundsResults">
+        <!-- <td>edit</td> -->
         <td>{{round.roundId}}</td>
         <td *ngFor="let point of round.result">{{point.calculatedValue}}</td>
       </tr>
+      <tr class="result">
+        <td>Result</td>
+        <td *ngFor="let point of points">{{point}}</td>
+      </tr>
     </table>
   </div>
+  <br/>
+  <br/>
   <div>
     <h5>Current Round</h5>
-    <table>
+    <table class="table-striped">
       <tr>
         <td>Player</td>
         <td>MaalSeen</td>
@@ -26,8 +34,9 @@
       <td>{{roundPlayer.name}}</td>
       <td><input type="checkbox" [(ngModel)]="roundPlayer.maalSeen" name="maalSeen" /></td>
       <td><input type="checkbox" [(ngModel)]="roundPlayer.gameWon" name="gameWon" /></td>
-      <td><input type="number" [(ngModel)]="roundPlayer.totalMaal" name="totalMaal" /></td>
+      <td><input type="number" class="maal-number" [(ngModel)]="roundPlayer.totalMaal" name="totalMaal" /></td>
     </table>
+    <br/>
     <input type="button" name="Calculate" (click)="calculateMaal()" value="calculate" />
   </div>
 </div>

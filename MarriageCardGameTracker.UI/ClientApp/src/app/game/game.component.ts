@@ -23,6 +23,7 @@ export class GameComponent {
   baseUrl: string;
   game: Game;
   currentRound: RoundRequest;
+  points: number[];
   errorMessage: string;
   private httpOptions = {
     headers: new HttpHeaders({
@@ -35,13 +36,26 @@ export class GameComponent {
     this.gameService = gameService;
     this.roundService = roundService;
     this.currentRound = new RoundRequest;
+    this.points = new Array<number>();
     var id = this.route.snapshot.paramMap.get('id');
 
     this.gameService.loadGame(id)
       .then((game: Game) => {
         this.game = game;
         this.makeRoundRequest();
+        this.calculateOverallResults();
       });
+  }
+
+  private calculateOverallResults() {
+    this.points = [];
+    this.game.players.forEach(x => {
+      let sum = 0;
+      this.game.roundsResults.forEach(y => y.result.filter(p => p.name === x.name).forEach(s => {
+        sum += s.calculatedValue;
+      }));
+      this.points.push(sum);
+    });
   }
 
   private makeRoundRequest() {
@@ -61,7 +75,8 @@ export class GameComponent {
       .then((roundResult: RoundResult) => {
           this.errorMessage = null;
           this.game.roundsResults.push(roundResult);
-          this.makeRoundRequest();
+        this.makeRoundRequest();
+          this.calculateOverallResults();
         },
         (error) => {
           this.errorMessage = error.error.errorMessage;

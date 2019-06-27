@@ -2,14 +2,29 @@ ul {
   list-style-type: none;
 }
 
-td {
-  padding: 10px;
-}
-
-tr td {
-  padding: 10px;
-}
-
 .warning{
   color: red;
+}
+
+table, td, th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  /* width: 100%; */
+}
+
+th, td {
+  padding: 20px;
+}
+
+.maal-number {
+  width: 50px;
+}
+
+.result {
+  color: green;
+  font-weight: bold;
 }
