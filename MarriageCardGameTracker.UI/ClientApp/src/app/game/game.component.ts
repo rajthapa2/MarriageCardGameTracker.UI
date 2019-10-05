@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GameService } from '../services/game-service';
 import { RoundService } from '../services/round-service';
-import { Injectable } from '@angular/core';
 import {Game} from './game'
 import { RoundRequest } from '../round/round-request';
 import { RoundResponse as RoundResult} from '../round/round-response';
@@ -30,6 +29,8 @@ export class GameComponent {
       'content-Type': 'application/json'
     })
   };
+
+  clicked = false;
 
   constructor(gameService: GameService, private route: ActivatedRoute, roundService: RoundService) {
     this.game = new Game();
@@ -69,17 +70,49 @@ export class GameComponent {
     this.currentRound = round;
   };
 
+  gameWonChange(player) {
+    this.currentRound.playersMaal.forEach(p => {
+      if (p.name === player.name) {
+        if (player.gameWon) {
+          player.maalSeen = true;
+        } else {
+          player.maalSeen = false;
+        }
+      }
+      else {
+        p.gameWon = false;
+      }
+
+    });
+
+  }
+
+  isDublieeClick(player) {
+    if (player.isDubliee) {
+      player.maalSeen = true;
+    }
+  }
+
+
+  maalInputChange(player) {
+    if (player.totalMaal > 0) {
+      player.maalSeen = true;
+    }
+  }
+
   calculateMaal() {
     const id = this.route.snapshot.paramMap.get('id');
     this.roundService.calculate(id, this.currentRound)
       .then((roundResult: RoundResult) => {
           this.errorMessage = null;
           this.game.roundsResults.push(roundResult);
-        this.makeRoundRequest();
+          this.makeRoundRequest();
           this.calculateOverallResults();
+          this.clicked = false;
         },
         (error) => {
           this.errorMessage = error.error.errorMessage;
+          this.clicked = false;
         });
   }
 }

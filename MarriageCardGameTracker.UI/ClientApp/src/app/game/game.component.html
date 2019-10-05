@@ -26,17 +26,19 @@
     <table class="table-striped">
       <tr>
         <td>Player</td>
-        <td>MaalSeen</td>
+        <td>Seen</td>
+        <td>Dubliee</td>
         <td>GameWon</td>
         <td>Maal</td>
       </tr>
       <tr *ngFor="let roundPlayer of currentRound.playersMaal">
       <td>{{roundPlayer.name}}</td>
       <td><input type="checkbox" [(ngModel)]="roundPlayer.maalSeen" name="maalSeen" /></td>
-      <td><input type="checkbox" [(ngModel)]="roundPlayer.gameWon" name="gameWon" /></td>
-      <td><input type="number" class="maal-number" [(ngModel)]="roundPlayer.totalMaal" name="totalMaal" /></td>
+      <td><input type="checkbox" [(ngModel)]="roundPlayer.isDubliee" (change) ="isDublieeClick(roundPlayer)" name="isDubliee" /></td>
+      <td><input type="checkbox" [(ngModel)]="roundPlayer.gameWon" (change)="gameWonChange(roundPlayer)" name="gameWon" /></td>
+      <td><input style="width: 40px;" type="number" [(ngModel)]="roundPlayer.totalMaal" (change)="maalInputChange(roundPlayer)" name="totalMaal" /></td>
     </table>
     <br/>
-    <input type="button" name="Calculate" (click)="calculateMaal()" value="calculate" />
+    <input type="button" [disabled]="clicked" name="Calculate" (click)="calculateMaal(); clicked = true;" value="calculate" />
   </div>
 </div>

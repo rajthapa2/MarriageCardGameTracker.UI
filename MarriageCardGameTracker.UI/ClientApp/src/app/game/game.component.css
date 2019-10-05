@@ -12,25 +12,25 @@ table, td {
 }
 
 td{
-   text-align: right;
+   text-align: center;
 }
 table {
   border-collapse: collapse;
-  /* width: 100%; */
+  width: 90%;
 }
 
 th, td {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-.maal-number {
-  width: 50px;
-}
 
 .result {
   color: green;
   font-weight: bold;
 }
+
+td input {
+  width: 60px;
+}
+

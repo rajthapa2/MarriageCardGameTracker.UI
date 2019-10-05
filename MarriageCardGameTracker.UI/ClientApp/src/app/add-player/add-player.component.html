@@ -1,7 +1,9 @@
 <input [(ngModel)] = "numberOfPlayer" max="5" (ngModelChange)="onChange(numberOfPlayer)" type="number" placeholder="Number"/>
 <br />
-<tr *ngFor="let player of players">
-  <td>
-    <input [(ngModel)]="player.name" placeholder="Please enter the name" />
-  </td>
-</tr>
+<table>
+  <tr *ngFor="let player of players">
+    <td style="display: block">
+      <input style="width: 100%" [(ngModel)]="player.name" autofocus placeholder="Please enter the name" />
+    </td>
+  </tr>
+</table>
