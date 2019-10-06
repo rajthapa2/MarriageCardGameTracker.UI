@@ -7,11 +7,13 @@
         <!-- <td>&nbsp;</td> -->
         <td>Round</td>
         <td *ngFor="let player of game.players">{{ player.name }}</td>
+        <td>Maal</td>
       </tr>
       <tr *ngFor="let round of game.roundsResults">
         <!-- <td>edit</td> -->
         <td>{{round.roundId}}</td>
-        <td *ngFor="let point of round.result">{{point.calculatedValue}}</td>
+        <td *ngFor="let point of round.result" [ngClass]="{'maal-seen': point.maalSeen === true && point.gameWon === false, 'maal-unseen' : point.maalSeen === false, 'game-won': point.gameWon === true}">{{point.calculatedValue}}</td>
+        <td>{{round.totalMaal}}</td>
       </tr>
       <tr class="result">
         <td>Total</td>

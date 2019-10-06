@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {PlayerService} from "../services/player-service"
 import { GameService } from "../services/game-service"
+import { Player as Player } from "../add-player/player";
+
 
 @Component({
   selector: 'app-home',
@@ -9,9 +11,10 @@ import { GameService } from "../services/game-service"
 export class HomeComponent {
   playerService : PlayerService;
   gameService: GameService;
+  players: Array<Player>;
 
-  startNewGame() {
-    let players = this.playerService.getPlayers();
+  startNewGame(players: Player[]) {
+    players = this.playerService.getPlayers();
 
     this.gameService.createGame();
   }

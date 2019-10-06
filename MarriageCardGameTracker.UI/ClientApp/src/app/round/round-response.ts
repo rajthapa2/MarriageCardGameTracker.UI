@@ -9,4 +9,6 @@ export class RoundResponse {
 export class RoundResponsePlayer {
   name: string;
   calculatedValue: number;
+  gameWon: boolean;
+  maalSeen: boolean;
 }

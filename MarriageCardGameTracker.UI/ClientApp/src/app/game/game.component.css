@@ -26,11 +26,21 @@ th, td {
 
 
 .result {
-  color: green;
+  color: #006400;
   font-weight: bold;
+  font-size: 17px;
 }
 
 td input {
   width: 60px;
 }
 
+.game-won {
+  color: blue;
+}
+.maal-unseen {
+  color: red;
+}
+.maal-seen {
+  color: green;
+}

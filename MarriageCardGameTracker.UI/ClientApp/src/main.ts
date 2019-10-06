@@ -9,8 +9,7 @@ export function getBaseUrl() {
 }
 
 export function getAppBaseUrl() {
-//  return "https://qbron787we.execute-api.ap-southeast-2.amazonaws.com/Prod";
-  return "https://localhost:44346";
+  return environment.appUrl;
 }
 
 const providers = [
