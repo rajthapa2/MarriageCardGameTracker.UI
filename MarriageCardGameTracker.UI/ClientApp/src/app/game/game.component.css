@@ -6,7 +6,7 @@ ul {
   color: red;
 }
 
-table, td {
+/*table, td {
   border: 1px solid #ddd;
   text-align: left;
 }
@@ -19,7 +19,7 @@ table {
   width: 90%;
 }
 
-th, td {
+th {
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -33,7 +33,25 @@ th, td {
 
 td input {
   width: 60px;
+}*/
+
+table td {
+  position: relative;
 }
+
+table td input {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
 
 .game-won {
   color: blue;
@@ -43,4 +61,22 @@ td input {
 }
 .maal-seen {
   color: green;
+}
+
+
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+  border: none;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
 }

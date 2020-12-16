@@ -41,7 +41,6 @@ export class RoundService {
         .toPromise()
         .then(
           res => { // success
-            console.log(res);
             this.roundResult = res;
             resolve(res);
           },
@@ -51,5 +50,14 @@ export class RoundService {
         );
     });
     return promise;
+  }
+
+  public deleteRound(gameId: string, roundId: number) {
+    let answer = confirm("Are you sure you want to delete this round ?");
+    if(answer) {
+      let apiUrl = `${this.baseUrl}/api/${gameId}/rounds/${roundId}`;
+      const promise = this.http.delete(apiUrl).toPromise();
+      return promise;
+    }
   }
 }

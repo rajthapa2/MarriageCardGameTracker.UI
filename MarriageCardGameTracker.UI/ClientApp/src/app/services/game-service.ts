@@ -51,7 +51,6 @@ export class GameService {
         .subscribe(
           result => {
             this.game = result;
-            console.log(result);
             resolve(result);
           },
           error => console.error(error));

@@ -8,7 +8,6 @@ import { RoundRequest } from '../round/round-request';
 import { RoundResponse as RoundResult} from '../round/round-response';
 import { RoundPlayer } from '../round/round-player';
 
-
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -31,6 +30,7 @@ export class GameComponent {
   };
 
   clicked = false;
+  deleteClicked = false;
 
   constructor(gameService: GameService, private route: ActivatedRoute, roundService: RoundService) {
     this.game = new Game();
@@ -39,7 +39,10 @@ export class GameComponent {
     this.currentRound = new RoundRequest;
     this.points = new Array<number>();
     var id = this.route.snapshot.paramMap.get('id');
+    this.reLoadGame(id);
+  }
 
+  private reLoadGame(id) {
     this.gameService.loadGame(id)
       .then((game: Game) => {
         this.game = game;
@@ -82,9 +85,7 @@ export class GameComponent {
       else {
         p.gameWon = false;
       }
-
     });
-
   }
 
   isDublieeClick(player) {
@@ -114,5 +115,15 @@ export class GameComponent {
           this.errorMessage = error.error.errorMessage;
           this.clicked = false;
         });
+  }
+
+  deleteRound(roundId:number) {
+    const gameId = this.route.snapshot.paramMap.get('id');
+    this.roundService
+      .deleteRound(gameId, roundId)
+      .then(() => {
+        this.reLoadGame(gameId);
+        this.deleteClicked = false;
+      });
   }
 }
