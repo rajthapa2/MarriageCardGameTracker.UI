@@ -6,40 +6,22 @@ ul {
   color: red;
 }
 
-/*table, td {
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-td{
-   text-align: center;
-}
-table {
-  border-collapse: collapse;
-  width: 90%;
-}
-
-th {
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-
 .result {
   color: #006400;
   font-weight: bold;
   font-size: 17px;
 }
 
-td input {
-  width: 60px;
-}*/
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
 table td {
   position: relative;
 }
 
-table td input {
+table td input[type=checkbox] {
   position: absolute;
   display: block;
   top: 0;
@@ -53,6 +35,17 @@ table td input {
 }
 
 
+table td input[type=number] {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
 .game-won {
   color: blue;
 }
@@ -61,16 +54,6 @@ table td input {
 }
 .maal-seen {
   color: green;
-}
-
-
-.table-borderless > tbody > tr > td,
-.table-borderless > tbody > tr > th,
-.table-borderless > tfoot > tr > td,
-.table-borderless > tfoot > tr > th,
-.table-borderless > thead > tr > td,
-.table-borderless > thead > tr > th {
-  border: none;
 }
 
 th {
