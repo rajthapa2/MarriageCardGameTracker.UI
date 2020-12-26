@@ -1,15 +1,9 @@
-ul {
+/* ul {
   list-style-type: none;
 }
 
 .warning{
   color: red;
-}
-
-.result {
-  color: #006400;
-  font-weight: bold;
-  font-size: 17px;
 }
 
 table {
@@ -21,18 +15,7 @@ table td {
   position: relative;
 }
 
-table td input[type=checkbox] {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  border: none;
-  padding: 10px;
-  box-sizing: border-box;
-}
+
 
 
 table td input[type=number] {
@@ -44,7 +27,7 @@ table td input[type=number] {
   width: 100%;
   height: 100%;
 }
-
+*/
 
 .game-won {
   color: blue;
@@ -58,8 +41,44 @@ table td input[type=number] {
 
 th {
   text-align: center;
+  padding: 0;
 }
 
-td {
+.result-table td {
   text-align: center;
+  padding: 0;
+  padding-top : 10px;
+} 
+
+.result {
+  color: #006400;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+table {
+  font-size: 14px;
+}
+
+
+table td input[type=checkbox] {
+  display: block;
+  top: 0;
+  left: 0;
+  margin: 0;
+  height: 30px;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.current-round td{
+  text-align: center;
+  margin : 0px;
+}
+
+.input-mall{
+  width: 40px;
+  height: 30px;
 }
