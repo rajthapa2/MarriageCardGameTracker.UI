@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-  appUrl: "http://localhost:5000"
+  appUrl: "https://localhost:44311",
 };
 
+//
 /*
  * In development mode, to ignore zone related error stack frames such as
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
